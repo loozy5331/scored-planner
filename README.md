@@ -10,20 +10,26 @@
 2. 계획 수행 후 평가(점수)
 
 ## 구조 (각각 별도의 repo 사용)
+
 scored-planner-frontend
   - Vue3
+
 scored-planner-apiServer
   - fastAPI
+
 scored-planner-CICD
   - CI - ArgoWorkflow
   - CD - ArgoCD
+
 scored-planner-logging
   - elastic search
   - fluent-bit
   - kibana
+
 scored-planner-monitoring
   - prometheus
   - grafana
+
 scored-planner-analysis
   - hadoop -> spark
   - kafka -> flink
