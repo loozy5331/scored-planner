@@ -1,13 +1,15 @@
 # scored-planner
 점수 계획표 프로젝트 (version 2)
 
-## 예정 기간(TODO)
-
-## 문서화 진행
-
-## 목표
+## 고려사항 및 설계 포인트(TODO)
 1. 긴 간격을 가지고 반복되는 계획들 확인
 2. 계획 수행 후 평가(점수)
+
+## 시스템 요구사항(System Requirements) (TODO)
+
+## 실행 방법(Getting Started)(TODO)
+
+## 문서화 진행
 
 ## 구조 (각각 별도의 repo 사용)
 
