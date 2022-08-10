@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: scp
+  name: scp
+spec:
+  containers:
+  - image: nginx
+    name: proxy
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: nginx-conf-vol
+      readOnly: true
+      mountPath: /etc/nginx/conf.d
+  volumes:
+  - name: nginx-conf-vol
+    configMap:
+      name: nginx-conf
+      items:
+      - key: nginx.conf
+        path: nginx.conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scp
+spec: 
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30080
+  selector:
+    app: scp
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-conf
+data:
+  nginx.conf: |
+    upstream frontend {
+      server frontend:10002;
+    }
+
+    upstream backend {
+      server backend:10001;
+    }
+
+    server {
+      listen 80;
+      
+      location / {
+        proxy_pass http://frontend;
+      }
+
+      location /api {
+        proxy_pass http://backend;
+      }
+    }
