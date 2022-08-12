@@ -6,10 +6,10 @@ metadata:
     app: backend
 spec:
   containers:
-  - image: nginx # localhost:5000/backend
-    name: nginx
+  - image: 10.108.42.150/backend # {register's cluster-ip}/{image-name}
+    name: backend
     ports:
-    - containerPort: 80
+    - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
@@ -20,6 +20,6 @@ spec:
   selector:
     app: backend
   ports:
-  - port: 10001 # 8080
+  - port: 10001
     protocol: TCP
-    targetPort: 80
+    targetPort: 8000

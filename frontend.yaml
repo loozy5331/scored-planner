@@ -6,8 +6,8 @@ metadata:
     app: frontend
 spec:
   containers:
-  - image: nginx
-    name: nginx
+  - image: 10.108.42.150/frontend # {register's cluster-ip}/{image-name}
+    name: frontend
     ports:
     - containerPort: 80
 ---
@@ -20,6 +20,6 @@ spec:
   selector:
     app: frontend
   ports:
-  - port: 10002 # 8080
+  - port: 10002
     protocol: TCP
     targetPort: 80

@@ -20,7 +20,7 @@ metadata:
   name: cluster-ip
 spec:
   containers:
-  - image: 10.108.42.150/test
+  - image: 10.108.42.150/test # {register's cluster-ip}/{image-name}
     name: cluster-ip
     ports:
     - containerPort: 80
